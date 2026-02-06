@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actuality Premium - Upgrade to unlock the full potential of your business">
+    <title>Actuality - Get Premium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 20px;
+            z-index: 9998;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .cookie-text p {
+            color: #999;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #2997ff;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="assets/logo.png" alt="Actuality" class="nav-logo-img">
+                    <span class="logo-text">Actuality</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="download.html">Download</a>
+                <a href="training.html">Training</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero premium-hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="badge-icon"></span>
+                <span>Premium Access</span>
+            </div>
+            <h1 class="mission-statement">"Our Goal Is To Make<br><span class="gradient-text">Small & Medium Scale
+                    Enterprises Thrive"</span></h1>
+            <p class="hero-subtitle">
+                Unlock the full potential of Actuality and take your business to the next level
+                with our premium features and priority support.
+            </p>
+        </div>
+    </section>
+
+    <!-- Premium Benefits -->
+    <section class="premium-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Go Premium?</span>
+                <h2>Premium Benefits</h2>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"></div>
+                    <h3>All Features Unlocked</h3>
+                    <p>Access every feature without limitations - AI insights, multi-location, advanced analytics, and
+                        more.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"></div>
+                    <h3>Priority Support</h3>
+                    <p>Get faster response times and dedicated assistance from our support team.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"></div>
+                    <h3>Free Updates</h3>
+                    <p>Receive all future updates and new features at no additional cost during your subscription.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"></div>
+                    <h3>Business Growth</h3>
+                    <p>Tools designed to help small and medium enterprises scale efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="premium-section alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Choose Your Plan</span>
+                <h2>Simple Pricing</h2>
+            </div>
+            <div class="premium-pricing-grid">
+                <div class="premium-plan-card">
+                    <h3>Premium Yearly</h3>
+                    <div class="plan-price">
+                        <span class="currency" data-currency-symbol>₦</span>
+                        <span class="amount" data-price="60000">60,000</span>
+                        <span class="period">/year</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li> All features included</li>
+                        <li> 1 Year activation</li>
+                        <li> Priority support</li>
+                        <li> Free updates</li>
+                        <li> AI-powered insights</li>
+                    </ul>
+                </div>
+                <div class="premium-plan-card featured">
+                    <div class="plan-badge">Best Value</div>
+                    <h3>2 Years Plan</h3>
+                    <div class="plan-price">
+                        <span class="currency" data-currency-symbol>₦</span>
+                        <span class="amount" data-price="110000">110,000</span>
+                        <span class="period">/2 years</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li> All features included</li>
+                        <li> 2 Years activation</li>
+                        <li> Priority support</li>
+                        <li> Free updates</li>
+                        <li> Save 13% vs yearly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Process -->
+    <section class="premium-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How To Pay</span>
+                <h2>Activation Process</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Fill The Form</h3>
+                    <p>Complete the payment form below with your details.</p>
+                </div>
+                <div class="step-arrow">-></div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Get Payment Details</h3>
+                    <p>Contact us to receive payment instructions and account details.</p>
+                </div>
+                <div class="step-arrow">-></div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Receive Code</h3>
+                    <p>Get your activation code once payment is confirmed.</p>
+                </div>
+            </div>
+
+            <div class="activation-notice">
+                <div class="notice-icon"></div>
+                <p><strong>You will receive an activation code once payment has been confirmed.</strong><br>
+                    Please allow up to 24 hours for payment verification. For faster processing, send proof of payment
+                    via WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in Touch -->
+    <section class="premium-section alt-bg">
+        <div class="container">
+            <div class="payment-wrapper">
+                <div class="payment-details">
+                    <h2>Get in Touch</h2>
+                    <div class="account-card" style="text-align: center; padding: 40px;">
+
+                        <h3 style="margin-bottom: 15px; color: #fff;">Ready to Go Premium?</h3>
+                        <p style="color: #999; margin-bottom: 25px; line-height: 1.6;">
+                            Fill out the form and our team will contact you with payment details and next steps.
+                            We're here to help you get started!
+                        </p>
+                        <a href="contact.html" class="btn btn-primary"
+                            style="display: inline-block; padding: 15px 40px; font-size: 1rem;">
+                            Contact Us
+                        </a>
+                    </div>
+
+                    <div class="contact-details">
+                        <h3>Quick Contact</h3>
+                        <div class="contact-row">
+                            <span class="contact-icon"></span>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <a href="https://wa.me/2347084336469">+234 708 433 6469</a>
+                            </div>
+                        </div>
+                        <div class="contact-row">
+                            <span class="contact-icon"></span>
+                            <div>
+                                <strong>Email</strong>
+                                <a href="mailto:support@actuality.cloud">support@actuality.cloud</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-form-section">
+                    <h2>Payment Form</h2>
+                    <form id="premiumForm" action="https://formsubmit.co/support@actuality.cloud" method="POST"
+                        class="premium-form">
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_subject" value="New Premium Order - Actuality">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_autoresponse"
+                            value="Thank you for your Premium order! Our team will contact you shortly with payment details and next steps. For faster response, reach us on WhatsApp: +234 708 433 6469. You will receive your activation code within 24 hours of payment confirmation.">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="Full Name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone/WhatsApp *</label>
+                            <input type="tel" id="phone" name="Phone" required placeholder="+234 XXX XXX XXXX">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company/Business Name</label>
+                            <input type="text" id="company" name="Company" placeholder="Your business name">
+                        </div>
+                        <div class="form-group">
+                            <label for="plan">Select Plan *</label>
+                            <select id="plan" name="Plan" required>
+                                <option value="">Choose a plan</option>
+                                <option value="yearly">Premium Yearly - ₦60,000</option>
+                                <option value="2years">2 Years Plan - ₦110,000 (Best Value)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Submit & Proceed to Payment
+                        </button>
+                    </form>
+                    <p class="form-note">After submitting, our team will contact you with payment details. For faster
+                        response, reach us on WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="premium-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Questions?</span>
+                <h2>Frequently Asked</h2>
+            </div>
+            <div class="faq-grid" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does activation take?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Once payment is confirmed, you'll receive your activation code within 24 hours. For faster
+                            processing, send proof of payment via WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I activate my license?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Open Actuality, go to Settings > Activation, and enter the activation code you received. Your
+                            premium features will be unlocked immediately.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I transfer my license to another device?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Each license is bound to one device. Contact support if you need to transfer your license to
+                            a new device.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Actuality" class="footer-logo-img">
+                    <span class="logo-text">Actuality</span>
+                    <p class="tagline">"Truth. Now. Always."</p>
+                    <p class="footer-desc">Real-time Inventory Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="download.html">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="training.html">Training</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="premium.html">Premium</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="license.html">License</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Standowd. All Rights Reserved.</p>
+            <p>support@actuality.cloud</p>
+        </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+    <script>
+        // Premium form handling with FormSubmit.co
+        document.getElementById('premiumForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const form = this;
+            const formDataObj = new FormData(form);
+
+            // Send via FormSubmit.co using fetch (AJAX)
+            fetch(form.action, {
+                method: 'POST',
+                body: formDataObj,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                if (data.success) {
+                    console.log('Form submitted successfully - auto-reply sent');
+                }
+            }).catch(function (error) {
+                console.log('Form submission error:', error);
+            });
+
+            // Save form data
+            const formData = {
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                plan: document.getElementById('plan').value
+            };
+            localStorage.setItem('premium_order', JSON.stringify(formData));
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit & Proceed to Payment';
+
+            // Show success message
+            alert('Form submitted successfully!\n\nYou will receive a confirmation email shortly.\n\nOur team will contact you with payment details.\n\nFor faster response, reach us on WhatsApp: +234 708 433 6469');
+        });
+    </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>We use cookies</h4>
+                <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept
+                    All", you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Functions
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if cookies already accepted
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

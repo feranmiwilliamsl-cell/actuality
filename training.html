@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actuality Training - Learn how to use Actuality Inventory Management Software">
+    <title>Actuality - Training & Learning Center</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 20px;
+            z-index: 9998;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .cookie-text p {
+            color: #999;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #2997ff;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <style>
+        /* Mobile Navigation Inline */
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .nav-mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: rgba(0, 0, 0, 0.98) !important;
+                flex-direction: column !important;
+                padding: 80px 30px 30px !important;
+                gap: 0 !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+                border-left: 1px solid #333 !important;
+            }
+
+            .nav-links.active {
+                right: 0 !important;
+            }
+
+            .nav-links a {
+                padding: 15px 0 !important;
+                font-size: 1.1rem !important;
+                border-bottom: 1px solid #222 !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="assets/logo.png" alt="Actuality" class="nav-logo-img">
+                    <span class="logo-text">Actuality</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="download.html">Download</a>
+                <a href="training.html">Training</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span class="badge-icon"></span>
+                <span>Learning Center</span>
+            </div>
+            <h1>Master Actuality<br><span class="gradient-text">In Minutes</span></h1>
+            <p class="hero-subtitle">
+                Learn everything you need to know about using Actuality through our comprehensive
+                training resources, video tutorials, and step-by-step guides.
+            </p>
+        </div>
+    </section>
+
+    <!-- Video Tutorials Section -->
+    <section class="training-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Video Tutorials</span>
+                <h2>Watch & Learn</h2>
+                <p class="section-desc">Step-by-step video guides to help you get started quickly.</p>
+            </div>
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button">▶</div>
+                        <span class="video-duration">5:30</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Getting Started</h3>
+                        <p>Learn how to install and set up Actuality for the first time.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button">▶</div>
+                        <span class="video-duration">8:15</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Adding Products</h3>
+                        <p>How to add products, set prices, and manage your inventory.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button">▶</div>
+                        <span class="video-duration">6:45</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Processing Sales</h3>
+                        <p>Complete guide to making sales and managing transactions.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button">▶</div>
+                        <span class="video-duration">7:20</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Reports & Analytics</h3>
+                        <p>Understanding your business data and generating reports.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button">▶</div>
+                        <span class="video-duration">4:50</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>Managing Users</h3>
+                        <p>Add team members and set up role-based permissions.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <div class="play-button">▶</div>
+                        <span class="video-duration">9:00</span>
+                    </div>
+                    <div class="video-info">
+                        <h3>AI Insights</h3>
+                        <p>Using AI-powered features for demand forecasting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshot Guides Section -->
+    <section class="training-section alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Screenshot Guides</span>
+                <h2>Visual Walkthroughs</h2>
+                <p class="section-desc">Detailed screenshots explaining every feature of the application.</p>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <div class="guide-icon"></div>
+                    <h3>Dashboard Overview</h3>
+                    <p>Understand all the widgets and metrics on your main dashboard.</p>
+                    <a href="#" class="guide-link">View Guide -></a>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon"></div>
+                    <h3>Product Management</h3>
+                    <p>Learn to add, edit, and organize products efficiently.</p>
+                    <a href="#" class="guide-link">View Guide -></a>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon"></div>
+                    <h3>Sales & Transactions</h3>
+                    <p>Process sales, handle returns, and manage payments.</p>
+                    <a href="#" class="guide-link">View Guide -></a>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon"></div>
+                    <h3>Reports & Analytics</h3>
+                    <p>Generate and understand your business reports.</p>
+                    <a href="#" class="guide-link">View Guide -></a>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon"></div>
+                    <h3>Settings & Configuration</h3>
+                    <p>Customize Actuality to fit your business needs.</p>
+                    <a href="#" class="guide-link">View Guide -></a>
+                </div>
+                <div class="guide-card">
+                    <div class="guide-icon"></div>
+                    <h3>Activation & Licensing</h3>
+                    <p>How to activate your license and manage subscriptions.</p>
+                    <a href="#" class="guide-link">View Guide -></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Seminars Section -->
+    <section class="training-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Live Training</span>
+                <h2>Seminars & Webinars</h2>
+                <p class="section-desc">Join our live training sessions for hands-on learning experience.</p>
+            </div>
+            <div class="seminar-list">
+                <div class="seminar-card">
+                    <div class="seminar-date">
+                        <span class="month">JAN</span>
+                        <span class="day">15</span>
+                    </div>
+                    <div class="seminar-info">
+                        <h3>Getting Started with Actuality</h3>
+                        <p>Perfect for new users - learn the basics in 1 hour</p>
+                        <div class="seminar-meta">
+                            <span>🕐 10:00 AM WAT</span>
+                            <span> Free for all users</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Register</a>
+                </div>
+                <div class="seminar-card">
+                    <div class="seminar-date">
+                        <span class="month">JAN</span>
+                        <span class="day">22</span>
+                    </div>
+                    <div class="seminar-info">
+                        <h3>Advanced Inventory Techniques</h3>
+                        <p>Deep dive into stock management and optimization</p>
+                        <div class="seminar-meta">
+                            <span>🕐 2:00 PM WAT</span>
+                            <span> Premium users</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Register</a>
+                </div>
+                <div class="seminar-card">
+                    <div class="seminar-date">
+                        <span class="month">FEB</span>
+                        <span class="day">05</span>
+                    </div>
+                    <div class="seminar-info">
+                        <h3>AI & Business Intelligence</h3>
+                        <p>Maximize your AI-powered insights and forecasting</p>
+                        <div class="seminar-meta">
+                            <span>🕐 11:00 AM WAT</span>
+                            <span> Premium users</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-secondary">Register</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Need Help Section -->
+    <section class="training-section alt-bg">
+        <div class="container">
+            <div class="help-content">
+                <h2>Need More Help?</h2>
+                <p>Our support team is here to assist you with any questions.</p>
+                <div class="help-options">
+                    <div class="help-card">
+                        <span class="help-icon"></span>
+                        <h3>Email Support</h3>
+                        <p>support@actuality.cloud</p>
+                    </div>
+                    <div class="help-card">
+                        <span class="help-icon"></span>
+                        <h3>WhatsApp</h3>
+                        <p>+234 708 433 6469</p>
+                    </div>
+                    <div class="help-card">
+                        <span class="help-icon"></span>
+                        <h3>Phone</h3>
+                        <p>+234 708 433 6469</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Actuality" class="footer-logo-img">
+                    <span class="logo-text">Actuality</span>
+                    <p class="tagline">"Truth. Now. Always."</p>
+                    <p class="footer-desc">Real-time Inventory Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="download.html">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="training.html">Training</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="premium.html">Premium</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="license.html">License</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Standowd. All Rights Reserved.</p>
+            <p>support@actuality.cloud</p>
+        </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>We use cookies</h4>
+                <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept
+                    All", you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Functions
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if cookies already accepted
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

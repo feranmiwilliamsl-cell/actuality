@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Actuality - Get in touch with our support team">
+    <title>Actuality - Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(41, 151, 255, 0.15);
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .contact-card a {
+            color: var(--accent-blue);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .contact-card a:hover {
+            color: var(--accent-green);
+        }
+
+        .contact-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .contact-intro h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-intro p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 20px;
+            z-index: 9998;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .cookie-text p {
+            color: #999;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #2997ff;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <style>
+        /* Mobile Navigation Inline */
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .nav-mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: rgba(0, 0, 0, 0.98) !important;
+                flex-direction: column !important;
+                padding: 80px 30px 30px !important;
+                gap: 0 !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+                border-left: 1px solid #333 !important;
+            }
+
+            .nav-links.active {
+                right: 0 !important;
+            }
+
+            .nav-links a {
+                padding: 15px 0 !important;
+                font-size: 1.1rem !important;
+                border-bottom: 1px solid #222 !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="assets/logo.png" alt="Actuality" class="nav-logo-img">
+                    <span class="logo-text">Actuality</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="download.html">Download</a>
+                <a href="training.html">Training</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Get In <span class="gradient-text">Touch</span></h1>
+            <p class="hero-subtitle">
+                We'd love to hear from you. Reach out through any of the channels below.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="premium-section">
+        <div class="container">
+            <div class="contact-intro">
+                <h2>How Can We <span class="gradient-text">Help?</span></h2>
+                <p>Our support team is available to assist you with setup, troubleshooting, premium activation, and any
+                    questions about Actuality.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Email -->
+                <div class="contact-card">
+                    <h3>Email Support</h3>
+                    <a href="mailto:support@actuality.cloud">support@actuality.cloud</a>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="contact-card">
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/2347084336469">+234 708 433 6469</a>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-card">
+                    <h3>Phone</h3>
+                    <a href="tel:+2347084336469">+234 708 433 6469</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="premium-section alt-bg">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>Send Us a <span class="gradient-text">Message</span></h2>
+                <p style="color: var(--text-secondary); margin-top: 10px;">Fill out the form below and we'll get back to
+                    you as soon as possible.</p>
+            </div>
+            <div style="max-width: 600px; margin: 40px auto 0;">
+                <form id="contactForm" action="https://formsubmit.co/support@actuality.cloud" method="POST"
+                    class="premium-form">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Contact Message - Actuality Website">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse"
+                        value="Thank you for contacting Actuality! We have received your message and will respond within 24 hours. For urgent matters, reach us on WhatsApp: +234 708 433 6469.">
+                    <div class="form-group">
+                        <label for="contactName">Full Name *</label>
+                        <input type="text" id="contactName" name="Name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address *</label>
+                        <input type="email" id="contactEmail" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Phone/WhatsApp</label>
+                        <input type="tel" id="contactPhone" name="Phone" placeholder="+234 XXX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject *</label>
+                        <input type="text" id="contactSubject" name="Subject" required placeholder="How can we help?">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message *</label>
+                        <textarea id="contactMessage" name="Message" required
+                            placeholder="Tell us more about your inquiry..." rows="5"
+                            style="width: 100%; padding: 12px 14px; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; color: var(--text-primary); font-size: 1rem; font-family: inherit; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full" id="contactSubmitBtn">Send Message</button>
+                </form>
+                <p style="text-align: center; margin-top: 16px; color: var(--text-secondary); font-size: 0.9rem;">
+                    We'll respond within 24 hours. For faster support, use WhatsApp.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Response Time -->
+    <section class="premium-section alt-bg">
+        <div class="container" style="text-align: center; max-width: 600px;">
+            <h2>Response Time</h2>
+            <p style="margin-top: 20px; color: var(--text-secondary); line-height: 1.8;">
+                We typically respond within <strong style="color: var(--accent-blue);">24 hours</strong>.
+                For faster support, reach out via WhatsApp.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Actuality" class="footer-logo-img">
+                    <span class="logo-text">Actuality</span>
+                    <p class="tagline">"Truth. Now. Always."</p>
+                    <p class="footer-desc">Real-time Inventory Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="download.html">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="training.html">Training</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="premium.html">Premium</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="license.html">License</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Standowd. All Rights Reserved.</p>
+            <p>support@actuality.cloud</p>
+        </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+    <script>
+        // Contact Form Handling with FormSubmit.co
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const form = this;
+            const formDataObj = new FormData(form);
+
+            // Send via FormSubmit.co using fetch (AJAX)
+            fetch(form.action, {
+                method: 'POST',
+                body: formDataObj,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log('Form submitted successfully', data);
+            }).catch(function (error) {
+                console.log('Form submission error:', error);
+            });
+
+            // Reset form and button
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+
+            // Show success message
+            alert('Thank you for your message!\\n\\nWe have received your inquiry and will respond within 24 hours.\\n\\nFor urgent matters, reach us on WhatsApp: +234 708 433 6469');
+        });
+    </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>We use cookies</h4>
+                <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept
+                    All", you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Functions
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if cookies already accepted
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

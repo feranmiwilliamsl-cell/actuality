@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Actuality - AI-Powered Inventory Management for Growing Businesses. Truth. Now. Always.">
+    <meta name="keywords" content="inventory management, AI, small business, automation, stock tracking">
+    <title>Actuality - Real-time Inventory Intelligence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "JDHA5uDnx_WUonDTw",
+            });
+        })();
+    </script>
+    <style>
+        /* Redesigned Modal - Full Screen on Mobile */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .modal.active {
+            display: block;
+        }
+
+        .modal-wrapper {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 32px 28px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 5px;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.5rem;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+
+        .modal-header p {
+            color: #999;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .lead-form .form-group {
+            margin-bottom: 16px;
+        }
+
+        .lead-form label {
+            display: block;
+            margin-bottom: 6px;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .lead-form input {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+        }
+
+        .lead-form input:focus {
+            outline: none;
+            border-color: #2997ff;
+        }
+
+        .lead-form input::placeholder {
+            color: #666;
+        }
+
+        .lead-form .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .lead-form .btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 480px) {
+            .modal-wrapper {
+                padding: 15px;
+                align-items: flex-start;
+                padding-top: 40px;
+            }
+
+            .modal-content {
+                padding: 24px 20px;
+                border-radius: 12px;
+            }
+
+            .modal-header h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 20px;
+            z-index: 9998;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .cookie-text p {
+            color: #999;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #2997ff;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <style>
+        /* Mobile Navigation Inline */
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .nav-mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: rgba(0, 0, 0, 0.98) !important;
+                flex-direction: column !important;
+                padding: 80px 30px 30px !important;
+                gap: 0 !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+                border-left: 1px solid #333 !important;
+            }
+
+            .nav-links.active {
+                right: 0 !important;
+            }
+
+            .nav-links a {
+                padding: 15px 0 !important;
+                font-size: 1.1rem !important;
+                border-bottom: 1px solid #222 !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.png" alt="Actuality" class="nav-logo-img"><span class="logo-text">Actuality</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="download.html">Download</a>
+                <a href="training.html">Training</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-icon"></span>
+                <span>AI-Powered Inventory Intelligence</span>
+            </div>
+            <h1 class="hero-title">
+                Stop Counting.<br>
+                <span class="gradient-text">Start Growing.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Transform your business with intelligent inventory management.
+                Say goodbye to paperwork, stockouts, and guesswork.
+                Say hello to automation, insights, and growth.
+            </p>
+            <div class="hero-cta">
+                <a href="#" onclick="openLeadModal(); return false;" class="btn btn-primary">
+                    Start Free 3-Month Trial
+                    <span class="btn-arrow">-></span>
+                </a>
+                <a href="#pricing" class="btn btn-secondary">
+                    View Premium Plans
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Months Free</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">AI</span>
+                    <span class="stat-label">Powered</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Offline</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-glow"></div>
+            <img src="assets/Stop_counting_start_growing.png" alt="Actuality - Stop Counting, Start Growing"
+                class="hero-image" style="max-width: 100%; height: auto; border-radius: 16px;">
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">The Problem</span>
+                <h2>Still Managing Inventory<br><span class="gradient-text">With Pen and Paper?</span></h2>
+            </div>
+            <div class="comparison-grid">
+                <div class="comparison-card old-way">
+                    <div class="card-header">
+                        <span class="card-icon"></span>
+                        <h3>The Old Way</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li><span class="icon-cross">x</span> Hours spent counting stock manually</li>
+                        <li><span class="icon-cross">x</span> Lost sales due to unexpected stockouts</li>
+                        <li><span class="icon-cross">x</span> Overstocking that ties up your cash</li>
+                        <li><span class="icon-cross">x</span> Scattered notebooks and spreadsheets</li>
+                        <li><span class="icon-cross">x</span> No visibility into your business</li>
+                    </ul>
+                </div>
+                <div class="comparison-card new-way">
+                    <div class="card-header">
+                        <span class="card-icon"></span>
+                        <h3>The Actuality Way</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li><span class="icon-check"></span> Real-time inventory at your fingertips</li>
+                        <li><span class="icon-check"></span> AI predicts what you need</li>
+                        <li><span class="icon-check"></span> Smart alerts keep you informed</li>
+                        <li><span class="icon-check"></span> One dashboard for everything</li>
+                        <li><span class="icon-check"></span> Data-driven decisions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Features</span>
+                <h2>Everything You Need<br><span class="gradient-text">To Run Your Business</span></h2>
+                <p class="section-desc">Powerful tools designed for small businesses ready to scale.</p>
+            </div>
+            <!-- Bento Grid Layout -->
+            <div class="bento-grid">
+                <div class="bento-card">
+                    <div class="bento-content">
+                        <h3>Smart Inventory</h3>
+                        <p>Real-time stock levels, low stock alerts, barcode scanning, and batch tracking for complete
+                            control.</p>
+                    </div>
+                    <div class="bento-image">
+                        <img src="./assets/smart_inventory.jpg" alt="Smart Inventory">
+                    </div>
+                </div>
+                <div class="bento-card reverse">
+                    <div class="bento-content">
+                        <h3>AI Insights & Analytics</h3>
+                        <p>Trust our predictive analytics to inform critical decisions and drive innovation.</p>
+                    </div>
+                    <div class="bento-image">
+                        <img src="./assets/analytics.jpg" alt="AI Analytics">
+                    </div>
+                </div>
+                <div class="bento-card">
+                    <div class="bento-content">
+                        <h3>Sales & Revenue</h3>
+                        <p>Manage your sales tracking and streamline the way you work using automation.</p>
+                    </div>
+                    <div class="bento-image">
+                        <img src="./assets/sales.jpg" alt="Sales Tracking">
+                    </div>
+                </div>
+                <div class="bento-card reverse">
+                    <div class="bento-content">
+                        <h3>Multi-User Support</h3>
+                        <p>Strengthen your business decisions with multi-user access .</p>
+                    </div>
+                    <div class="bento-image">
+                        <img src="./assets/multi_user.jpg" alt="Multi Location">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who It's For Section -->
+    <section class="audience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Who It's For</span>
+                <h2>Built for Businesses<br><span class="gradient-text">Ready to Scale</span></h2>
+            </div>
+            <div class="audience-grid">
+                <div class="audience-item">
+                    <span class="audience-icon"></span>
+                    <span>Retail Stores</span>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon"></span>
+                    <span>Restaurants</span>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon"></span>
+                    <span>Pharmacies</span>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon"></span>
+                    <span>Warehouses</span>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon"></span>
+                    <span>E-commerce</span>
+                </div>
+                <div class="audience-item">
+                    <span class="audience-icon"></span>
+                    <span>Manufacturing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Pricing</span>
+                <h2>Simple, Transparent<br><span class="gradient-text">Pricing</span></h2>
+                <p class="section-desc">Start free. Upgrade when you're ready.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free Trial</h3>
+                        <div class="pricing-amount">
+                            <span class="currency" data-currency-symbol>₦</span>
+                            <span class="price" data-price="0">0</span>
+                            <span class="period">/3 months</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li> All features included</li>
+                        <li> No credit card required</li>
+                        <li> Full support access</li>
+                        <li> AI-powered insights</li>
+                        <li> Unlimited products</li>
+                    </ul>
+                    <a href="#" onclick="openLeadModal(); return false;" class="btn btn-secondary btn-full">Start Free
+                        Trial</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Premium Yearly</h3>
+                        <div class="pricing-amount">
+                            <span class="currency" data-currency-symbol>₦</span>
+                            <span class="price" data-price="60000">60,000</span>
+                            <span class="period">/year</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li> All premium features</li>
+                        <li> Priority support</li>
+                        <li> Free updates forever</li>
+                        <li> Advanced analytics</li>
+                        <li> Multi-user support</li>
+                    </ul>
+                    <a href="premium.html" class="btn btn-primary btn-full">Get Premium</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>2 Years</h3>
+                        <div class="pricing-amount">
+                            <span class="currency" data-currency-symbol>₦</span>
+                            <span class="price" data-price="110000">110,000</span>
+                            <span class="period">/2 years</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li> Pay once for 2 years</li>
+                        <li> All premium features</li>
+                        <li> Free updates included</li>
+                        <li> Priority support</li>
+                        <li> Save 12% vs yearly</li>
+                    </ul>
+                    <a href="premium.html" class="btn btn-secondary btn-full">Get 2 Years</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">FAQ</span>
+                <h2>Frequently Asked<br><span class="gradient-text">Questions</span></h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do I need internet to use Actuality?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No! Actuality works completely offline. Your data is stored locally on your computer, so you
+                            can work without internet.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does setup take?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most businesses are up and running in under 30 minutes. Just install, create your account,
+                            and start adding products.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my data secure?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We use AES-256 encryption (the same used by banks) to protect your data. Your
+                            information never leaves your computer.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can multiple people use it?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! Add team members with different roles (Admin, Manager, Cashier, Staff). Each person gets
+                            their own login.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What happens after the free trial?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After 3 months, you can upgrade to a premium plan to continue using the software. Your data
+                            is preserved.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I get support?</span>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our support team is available via email at support@actuality.cloud. Premium users get
+                            priority
+                            support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download/CTA Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-glow"></div>
+                <h2>Ready to Transform<br><span class="gradient-text">Your Business?</span></h2>
+                <p>Join thousands of businesses who've ditched spreadsheets for smarter inventory management.</p>
+                <div class="download-cta">
+                    <a href="#" onclick="openLeadModal(); return false;" class="btn btn-primary btn-large"
+                        id="downloadBtn">
+                        <span class="btn-icon"></span>
+                        Download for Windows
+
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Actuality" class="footer-logo-img"><span
+                        class="logo-text">Actuality</span>
+                    <p class="tagline">"Truth. Now. Always."</p>
+                    <p class="footer-desc">Real-time Inventory Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="download.html">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="training.html">Training</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="premium.html">Premium</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="license.html">License</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Standowd. All Rights Reserved.</p>
+            <p>support@actuality.cloud</p>
+        </div>
+        </div>
+    </footer>
+
+    <!-- Lead Capture Modal -->
+    <div id="leadModal" class="modal">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeLeadModal()">&times;</button>
+                <div class="modal-header">
+                    <h3>Almost There!</h3>
+                    <p>Fill in your details to download Actuality</p>
+                </div>
+                <form id="leadForm" class="lead-form" action="https://formsubmit.co/support@actuality.cloud"
+                    method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Download Request - Actuality (Homepage)">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse"
+                        value="Thank you for downloading Actuality! Your download should start automatically. If you have any questions, contact us at support@actuality.cloud or WhatsApp: +234 708 433 6469. Enjoy your 3-month free trial!">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="Name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone/WhatsApp</label>
+                        <input type="tel" id="phone" name="Phone" placeholder="+234 XXX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Business Name</label>
+                        <input type="text" id="company" name="Company" placeholder="Your business name">
+                    </div>
+                    <button type="submit" class="btn">Download Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-icon"></div>
+            <h3>Thank You!</h3>
+            <p>Your download will start automatically.</p>
+            <a href="#" id="manualDownload" class="btn btn-primary">Download Manually</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+    <script>
+        // Modal Functions
+        function openLeadModal() {
+            document.getElementById('leadModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLeadModal() {
+            document.getElementById('leadModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close button
+        document.querySelector('#leadModal .modal-close').addEventListener('click', closeLeadModal);
+
+        // Close on outside click
+        document.getElementById('leadModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeLeadModal();
+            }
+        });
+
+        // Handle form submission with FormSubmit.co
+        document.getElementById('leadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const form = this;
+            const formDataObj = new FormData(form);
+
+            // Send via FormSubmit.co using fetch (AJAX)
+            fetch(form.action, {
+                method: 'POST',
+                body: formDataObj,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log('Form submitted successfully', data);
+            }).catch(function (error) {
+                console.log('Form submission error:', error);
+            });
+
+            // Save to localStorage
+            localStorage.setItem('download_user', JSON.stringify({
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                timestamp: new Date().toISOString()
+            }));
+
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Download Now';
+
+            // Close lead modal
+            closeLeadModal();
+
+            // Trigger download
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'installer_output/Actuality_Setup_v1.0.0.exe';
+            downloadLink.download = 'Actuality_Setup_v1.0.0.exe';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            // Show success modal
+            document.getElementById('successModal').classList.add('active');
+        });
+
+        // Close success modal
+        document.getElementById('successModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Manual download link
+        document.getElementById('manualDownload').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.href = 'installer_output/Actuality_Setup_v1.0.0.exe';
+        });
+    </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>We use cookies</h4>
+                <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept
+                    All", you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Functions
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if cookies already accepted
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        });
+    </script>
+    <script>
+        // Mobile Menu Toggle Function
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            if (navLinks && toggle) {
+                navLinks.classList.toggle('active');
+                toggle.classList.toggle('active');
+            }
+        }
+
+        // Also add click event listener as backup
+        document.addEventListener('DOMContentLoaded', function () {
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            if (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMobileMenu();
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

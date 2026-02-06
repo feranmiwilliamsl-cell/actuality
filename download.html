@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Download Actuality - AI-Powered Inventory Management Software">
+    <title>Actuality - Download</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "JDHA5uDnx_WUonDTw",
+            });
+        })();
+    </script>
+    <style>
+        /* Redesigned Modal - Full Screen on Mobile */
+        .download-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .download-modal.active {
+            display: block;
+        }
+
+        .modal-wrapper {
+            min-height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 32px 28px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+            padding: 5px;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            color: #fff;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.5rem;
+            margin: 0 0 8px 0;
+            color: #fff;
+        }
+
+        .modal-header p {
+            color: #999;
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 16px;
+        }
+
+        .modal-form label {
+            display: block;
+            margin-bottom: 6px;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 12px 14px;
+            background: #0a0a0a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: #2997ff;
+        }
+
+        .modal-form input::placeholder {
+            color: #666;
+        }
+
+        .modal-form .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .modal-form .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 480px) {
+            .modal-wrapper {
+                padding: 15px;
+                align-items: flex-start;
+                padding-top: 40px;
+            }
+
+            .modal-content {
+                padding: 24px 20px;
+                border-radius: 12px;
+            }
+
+            .modal-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .modal-form .form-group {
+                margin-bottom: 14px;
+            }
+
+            .modal-form input {
+                padding: 11px 12px;
+            }
+        }
+    </style>
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 20px;
+            z-index: 9998;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .cookie-text p {
+            color: #999;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #2997ff;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <style>
+        /* Mobile Navigation Inline */
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .nav-mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: rgba(0, 0, 0, 0.98) !important;
+                flex-direction: column !important;
+                padding: 80px 30px 30px !important;
+                gap: 0 !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+                border-left: 1px solid #333 !important;
+            }
+
+            .nav-links.active {
+                right: 0 !important;
+            }
+
+            .nav-links a {
+                padding: 15px 0 !important;
+                font-size: 1.1rem !important;
+                border-bottom: 1px solid #222 !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Download Modal -->
+    <div id="downloadModal" class="download-modal">
+        <div class="modal-wrapper">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeDownloadModal()">&times;</button>
+                <div class="modal-header">
+                    <h2>Almost There!</h2>
+                    <p>Fill in your details to download Actuality</p>
+                </div>
+                <form id="downloadForm" action="https://formsubmit.co/support@actuality.cloud" method="POST"
+                    class="modal-form">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New App Download Request - Actuality">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_autoresponse"
+                        value="Thank you for downloading Actuality! Your download should start automatically. If you have any questions, contact us at support@actuality.cloud or WhatsApp: +234 708 433 6469. Enjoy your 3-month free trial!">
+                    <input type="hidden" name="_next" value="">
+
+                    <div class="form-group">
+                        <label for="downloadName">Full Name *</label>
+                        <input type="text" id="downloadName" name="Name" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="downloadEmail">Email Address *</label>
+                        <input type="email" id="downloadEmail" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="downloadPhone">Phone/WhatsApp</label>
+                        <input type="tel" id="downloadPhone" name="Phone" placeholder="+234 XXX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="downloadCompany">Business Name</label>
+                        <input type="text" id="downloadCompany" name="Company" placeholder="Your business name">
+                    </div>
+                    <button type="submit" class="submit-btn">Download Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="assets/logo.png" alt="Actuality" class="nav-logo-img">
+                    <span class="logo-text">Actuality</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="download.html">Download</a>
+                <a href="training.html">Training</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Download Hero -->
+    <section class="page-hero download-hero">
+        <div class="container">
+            <div class="success-checkmark"></div>
+            <h1>Thank You!<br><span class="gradient-text">You're Almost Ready</span></h1>
+            <p class="hero-subtitle">
+                Download Actuality and start transforming your business today.
+            </p>
+        </div>
+    </section>
+
+    <!-- System Requirements -->
+    <section class="download-section">
+        <div class="container">
+            <div class="download-wrapper">
+                <div class="requirements-section">
+                    <div class="section-header" style="text-align: left; margin-bottom: 24px;">
+                        <span class="section-tag">Before You Install</span>
+                        <h2>System Requirements</h2>
+                    </div>
+
+                    <div class="requirements-card">
+                        <div class="requirement-item">
+                            <span class="req-icon"></span>
+                            <div>
+                                <strong>Operating System</strong>
+                                <p>Windows 10 or higher (64-bit recommended)</p>
+                            </div>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="req-icon"></span>
+                            <div>
+                                <strong>RAM</strong>
+                                <p>4 GB minimum (8 GB recommended)</p>
+                            </div>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="req-icon"></span>
+                            <div>
+                                <strong>Storage</strong>
+                                <p>500 MB available disk space</p>
+                            </div>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="req-icon"></span>
+                            <div>
+                                <strong>Display</strong>
+                                <p>1280 x 720 resolution or higher</p>
+                            </div>
+                        </div>
+                        <div class="requirement-item">
+                            <span class="req-icon"></span>
+                            <div>
+                                <strong>Internet</strong>
+                                <p>Only required for AI Assistant (works 100% offline otherwise)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="installation-steps">
+                        <h3>Installation Steps</h3>
+                        <ol>
+                            <li>Download the installer file below</li>
+                            <li>Run the installer</li>
+                            <li>Follow the on-screen instructions</li>
+                            <li>Launch Actuality from desktop shortcut</li>
+                            <li>Sign up and start your free trial!</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="download-action-section">
+                    <div class="download-card">
+                        <div class="app-icon">
+                            <img src="assets/logo.png" alt="Actuality" style="width: 80px; height: 80px;">
+                        </div>
+                        <h3>Actuality</h3>
+                        <p class="version">Version 1.0.0 | Windows</p>
+                        <p class="file-size">Size: ~380 MB</p>
+
+                        <button onclick="openDownloadModal()" class="btn btn-primary btn-full download-btn">
+                            Download for Windows
+                        </button>
+
+                        <p class="download-note">Your download will start after filling the form</p>
+                    </div>
+
+                    <!-- Premium Promotion -->
+                    <div class="premium-promo-card">
+                        <div class="promo-header">
+                            <span class="promo-icon"></span>
+                            <h3>Want Premium Features?</h3>
+                        </div>
+                        <p>After your 3-month free trial, upgrade to Premium for unlimited access to all features.</p>
+
+                        <div class="promo-steps">
+                            <div class="promo-step">
+                                <span class="step-num">1</span>
+                                <span>Try the app free for 3 months</span>
+                            </div>
+                            <div class="promo-step">
+                                <span class="step-num">2</span>
+                                <span>When ready, make payment</span>
+                            </div>
+                            <div class="promo-step">
+                                <span class="step-num">3</span>
+                                <span>Receive your activation key via email</span>
+                            </div>
+                        </div>
+
+                        <a href="premium.html" class="btn btn-secondary btn-full">
+                            View Premium Plans ->
+                        </a>
+                    </div>
+
+                    <!-- Contact Support -->
+                    <div class="support-card">
+                        <h4>Need Help?</h4>
+                        <p>Contact us for any installation issues:</p>
+                        <div class="support-contacts">
+                            <a href="https://wa.me/2347084336469" class="support-link">
+                                <span></span> WhatsApp
+                            </a>
+                            <a href="mailto:support@actuality.cloud" class="support-link">
+                                <span></span> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Next -->
+    <section class="download-section alt-bg">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Getting Started</span>
+                <h2>What's Next?</h2>
+            </div>
+            <div class="next-steps-grid">
+                <div class="next-step-card">
+                    <div class="step-number">1</div>
+                    <h3>Install & Sign Up</h3>
+                    <p>Run the installer and create your admin account to get started.</p>
+                </div>
+                <div class="next-step-card">
+                    <div class="step-number">2</div>
+                    <h3>Start Free Trial</h3>
+                    <p>Activate your 3-month free trial with full access to all features.</p>
+                </div>
+                <div class="next-step-card">
+                    <div class="step-number">3</div>
+                    <h3>Add Products</h3>
+                    <p>Start adding your inventory items and categories.</p>
+                </div>
+                <div class="next-step-card">
+                    <div class="step-number">4</div>
+                    <h3>Grow Your Business</h3>
+                    <p>Use AI insights to optimize inventory and increase profits.</p>
+                </div>
+            </div>
+
+            <div class="training-cta">
+                <p>Need help getting started?</p>
+                <a href="training.html" class="btn btn-secondary">
+                    Visit Training Center ->
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Actuality" class="footer-logo-img">
+                    <span class="logo-text">Actuality</span>
+                    <p class="tagline">"Truth. Now. Always."</p>
+                    <p class="footer-desc">Real-time Inventory Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="download.html">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="training.html">Training</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="premium.html">Premium</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="license.html">License</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Standowd. All Rights Reserved.</p>
+                <p>support@actuality.cloud</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+    <script>
+        // Download Modal Functions
+        function openDownloadModal() {
+            document.getElementById('downloadModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Scroll modal to top
+            document.querySelector('.download-modal').scrollTop = 0;
+        }
+
+        function closeDownloadModal() {
+            document.getElementById('downloadModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on background click
+        document.querySelector('.modal-wrapper').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeDownloadModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeDownloadModal();
+            }
+        });
+
+        // Handle form submission with FormSubmit.co
+        document.getElementById('downloadForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            const form = this;
+            const formData = new FormData(form);
+
+            // Send via FormSubmit.co using fetch (AJAX)
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log('Form submitted successfully', data);
+            }).catch(function (error) {
+                console.log('Form submission error:', error);
+            });
+
+            // Save to localStorage
+            localStorage.setItem('download_user', JSON.stringify({
+                name: document.getElementById('downloadName').value,
+                email: document.getElementById('downloadEmail').value,
+                phone: document.getElementById('downloadPhone').value,
+                company: document.getElementById('downloadCompany').value
+            }));
+
+            // Close modal
+            closeDownloadModal();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Download Now';
+
+            // Trigger download
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'installer_output/Actuality_Setup_v1.0.0.exe';
+            downloadLink.download = 'Actuality_Setup_v1.0.0.exe';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+
+            // Show success message
+            alert('Thank you! Your download has started.\n\nYou will receive a confirmation email shortly.\n\nIf the download doesn\'t start automatically, please check your downloads folder.');
+        });
+    </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>We use cookies</h4>
+                <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept
+                    All", you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Functions
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if cookies already accepted
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Actuality Software License Agreement">
+    <title>Actuality - License</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <style>
+        .legal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .legal-content h2 {
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .legal-content p,
+        .legal-content li {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .legal-content ul {
+            padding-left: 24px;
+        }
+
+        .legal-content ul li {
+            margin-bottom: 8px;
+        }
+
+        .last-updated {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        .license-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .license-box h3 {
+            color: var(--accent-blue);
+            margin-bottom: 16px;
+        }
+    </style>
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1a1a1a;
+            border-top: 1px solid #333;
+            padding: 20px;
+            z-index: 9998;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.show {
+            display: block;
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            color: #fff;
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+        }
+
+        .cookie-text p {
+            color: #999;
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cookie-text a {
+            color: #2997ff;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, #2997ff, #30d158);
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 600px) {
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+    <style>
+        /* Mobile Navigation Inline */
+        .nav-mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .nav-mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .nav-mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .nav-mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: -100% !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: rgba(0, 0, 0, 0.98) !important;
+                flex-direction: column !important;
+                padding: 80px 30px 30px !important;
+                gap: 0 !important;
+                transition: right 0.3s ease !important;
+                z-index: 1000 !important;
+                border-left: 1px solid #333 !important;
+            }
+
+            .nav-links.active {
+                right: 0 !important;
+            }
+
+            .nav-links a {
+                padding: 15px 0 !important;
+                font-size: 1.1rem !important;
+                border-bottom: 1px solid #222 !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="assets/logo.png" alt="Actuality" class="nav-logo-img">
+                    <span class="logo-text">Actuality</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#pricing">Pricing</a>
+                <a href="download.html">Download</a>
+                <a href="training.html">Training</a>
+                <a href="contact.html" class="nav-cta">Contact</a>
+            </div>
+            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Software <span class="gradient-text">License</span></h1>
+        </div>
+    </section>
+
+    <!-- Content -->
+    <section class="legal-content">
+        <p class="last-updated">Last Updated: December 2024</p>
+
+        <h2>End-User License Agreement (EULA)</h2>
+        <p>This End-User License Agreement ("Agreement") is a legal agreement between you and Standowd ("Company") for
+            the use of Actuality inventory management software ("Software").</p>
+
+        <div class="license-box">
+            <h3>License Types</h3>
+            <p><strong>Free Trial License:</strong> 3 months of full access to all features. No payment required.</p>
+            <p><strong>Premium Yearly License:</strong> 1 year of full access with priority support.</p>
+            <p><strong>Premium 2-Year License:</strong> 2 years of full access with priority support at a discounted
+                rate.</p>
+        </div>
+
+        <h2>Grant of License</h2>
+        <p>The Company grants you a non-exclusive, non-transferable, limited license to install and use the Software on
+            a single computer, subject to the terms of this Agreement.</p>
+
+        <h2>License Restrictions</h2>
+        <p>You may NOT:</p>
+        <ul>
+            <li>Copy, modify, or distribute the Software</li>
+            <li>Reverse engineer, decompile, or disassemble the Software</li>
+            <li>Rent, lease, or lend the Software to third parties</li>
+            <li>Use the Software for illegal purposes</li>
+            <li>Remove or alter any proprietary notices or labels</li>
+            <li>Transfer your license to another device without authorization</li>
+        </ul>
+
+        <h2>Device Binding</h2>
+        <p>Your license is bound to a single device using a unique hardware identifier. To transfer your license to a
+            new device, you must contact support for assistance.</p>
+
+        <h2>Activation</h2>
+        <p>Premium licenses require activation using a unique activation code provided upon purchase confirmation. Each
+            activation code can only be used once on a single device.</p>
+
+        <h2>Updates</h2>
+        <p>Licensed users are entitled to free software updates during their license period. Updates may include bug
+            fixes, security patches, and new features.</p>
+
+        <h2>Intellectual Property</h2>
+        <p>The Software and all copies thereof are proprietary to the Company and title to all rights remain with the
+            Company. All rights not specifically granted in this Agreement are reserved by the Company.</p>
+
+        <h2>Termination</h2>
+        <p>This license is effective until terminated. It will terminate automatically if you fail to comply with any
+            term of this Agreement. Upon termination, you must destroy all copies of the Software.</p>
+
+        <h2>No Warranty</h2>
+        <p>THE SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+            TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.</p>
+
+        <h2>Limitation of Liability</h2>
+        <p>IN NO EVENT SHALL THE COMPANY BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR CONSEQUENTIAL DAMAGES
+            WHATSOEVER ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE.</p>
+
+        <h2>Governing Law</h2>
+        <p>This Agreement shall be governed by and construed in accordance with the laws of Nigeria, without regard to
+            its conflict of law provisions.</p>
+
+        <h2>Contact</h2>
+        <p>For licensing inquiries, please contact:</p>
+        <p><a href="mailto:support@actuality.cloud" style="color: var(--accent-blue);">support@actuality.cloud</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/logo.png" alt="Actuality" class="footer-logo-img">
+                    <span class="logo-text">Actuality</span>
+                    <p class="tagline">"Truth. Now. Always."</p>
+                    <p class="footer-desc">Real-time Inventory Intelligence</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="index.html#features">Features</a>
+                        <a href="index.html#pricing">Pricing</a>
+                        <a href="download.html">Download</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="training.html">Training</a>
+                        <a href="index.html#faq">FAQ</a>
+                        <a href="premium.html">Premium</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                        <a href="license.html">License</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Standowd. All Rights Reserved.</p>
+            <p>support@actuality.cloud</p>
+        </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            var toggle = document.querySelector('.nav-mobile-toggle');
+            navLinks.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+    </script>
+    <!-- Cookie Consent Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4>We use cookies</h4>
+                <p>We use cookies to enhance your browsing experience and analyze site traffic. By clicking "Accept
+                    All", you consent to our use of cookies. <a href="privacy.html">Learn more</a></p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Functions
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            document.getElementById('cookieBanner').classList.remove('show');
+        }
+
+        // Check if cookies already accepted
+        document.addEventListener('DOMContentLoaded', function () {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookieBanner').classList.add('show');
+            }
+        });
+    </script>
+</body>
+
+</html>
