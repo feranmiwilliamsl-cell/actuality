@@ -52,6 +52,7 @@ const CurrencyManager = {
             console.log('💾 Using cached currency:', cachedCurrency);
             this.currentCurrency = this.currencies[cachedCurrency] || this.currencies[this.defaultCountry];
             this.updateAllPrices();
+            initPhoneInputs(cachedCurrency);
             return;
         }
 
@@ -65,9 +66,13 @@ const CurrencyManager = {
             localStorage.setItem('actuality_currency_expiry', (Date.now() + 86400000).toString());
 
             console.log('✅ Currency set to:', this.currentCurrency.code, '(' + this.currentCurrency.symbol + ')');
+
+            // Initialize phone inputs with detected country
+            initPhoneInputs(countryCode);
         } catch (error) {
             console.warn('⚠️ Could not detect location, using default currency:', error);
             this.currentCurrency = this.currencies[this.defaultCountry];
+            initPhoneInputs(this.defaultCountry);
         }
 
         this.updateAllPrices();
@@ -546,3 +551,38 @@ function exportLeadsCSV() {
 // Expose utilities to console for admin use
 window.getLeads = getLeads;
 window.exportLeadsCSV = exportLeadsCSV;
+
+/* ==========================================
+   Phone Input Initialization
+   ========================================== */
+function initPhoneInputs(countryCode) {
+    if (!window.intlTelInput) return;
+
+    // Ensure container takes full width
+    if (!document.getElementById('iti-fixes')) {
+        const style = document.createElement('style');
+        style.id = 'iti-fixes';
+        style.innerHTML = '.iti { width: 100%; display: block; } .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png"); } @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png"); } }';
+        document.head.appendChild(style);
+    }
+
+    const selectors = ['#phone', '#downloadPhone', '#contactPhone'];
+
+    selectors.forEach(selector => {
+        const input = document.querySelector(selector);
+        if (input) {
+            // Check if already initialized to prevent duplicates if init called multiple times
+            if (input.dataset.intlInitialized) return;
+
+            window.intlTelInput(input, {
+                initialCountry: countryCode ? countryCode.toLowerCase() : 'ng',
+                preferredCountries: ['ng', 'us', 'gb', 'gh', 'ke', 'za'],
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+                separateDialCode: true,
+                autoPlaceholder: "aggressive"
+            });
+
+            input.dataset.intlInitialized = "true";
+        }
+    });
+}
