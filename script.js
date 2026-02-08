@@ -220,13 +220,7 @@ function initNavigation() {
         }
     });
 
-    // Mobile menu toggle
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        });
-    }
+    // Mobile menu toggle handled by inline script in HTML to prevent conflicts
 }
 
 /* ==========================================
