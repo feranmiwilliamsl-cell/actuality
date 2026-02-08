@@ -412,25 +412,27 @@
             // Send via FormSubmit.co using fetch (AJAX)
             fetch(form.action, {
                 method: 'POST',
-                body: formDataObj,
+                body: new FormData(form),
                 headers: {
                     'Accept': 'application/json'
                 }
-            }).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                console.log('Form submitted successfully', data);
-            }).catch(function (error) {
-                console.log('Form submission error:', error);
-            });
-
-            // Reset form and button
-            form.reset();
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send Message';
-
-            // Show success message
-            alert('Thank you for your message!\\n\\nWe have received your inquiry and will respond within 24 hours.\\n\\nFor urgent matters, reach us on WhatsApp: +234 708 433 6469');
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Form submitted successfully', data);
+                    // Reset form and button
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                    // Show success message
+                    alert('Thank you for your message!\n\nWe have received your inquiry and will respond within 24 hours.\n\nFor urgent matters, reach us on WhatsApp: +234 708 433 6469');
+                })
+                .catch(error => {
+                    console.log('Form submission error:', error);
+                    alert('There was a problem sending your message. Please try again or contact us directly via email/WhatsApp.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
         });
     </script>
     <!-- Cookie Consent Banner -->
