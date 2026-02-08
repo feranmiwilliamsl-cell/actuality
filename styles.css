@@ -1168,6 +1168,7 @@ h3 {
     animation-delay: 0.5s;
     opacity: 0;
 }
+
 /* Footer logo styling */
 .footer-brand .logo-text {
     font-size: 2rem;
@@ -1178,6 +1179,7 @@ h3 {
     width: auto;
     margin-right: 12px;
 }
+
 /* ==========================================
    ADDITIONAL PAGES STYLES
    ========================================== */
@@ -1275,7 +1277,7 @@ h3 {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.75rem;
@@ -1400,7 +1402,7 @@ h3 {
     margin-bottom: 8px;
 }
 
-.help-content > p {
+.help-content>p {
     color: var(--text-secondary);
     margin-bottom: 40px;
 }
@@ -1710,45 +1712,48 @@ h3 {
 
 /* Responsive */
 @media (max-width: 1024px) {
+
     .video-grid,
     .guide-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .benefits-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .payment-wrapper {
         grid-template-columns: 1fr;
     }
-    
+
     .process-steps {
         flex-direction: column;
     }
-    
+
     .step-arrow {
         transform: rotate(90deg);
     }
 }
 
 @media (max-width: 768px) {
+
     .video-grid,
     .guide-grid,
     .benefits-grid,
     .premium-pricing-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .seminar-card {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .help-options {
         flex-direction: column;
     }
 }
+
 /* ==========================================
    DOWNLOAD PAGE STYLES
    ========================================== */
@@ -1772,9 +1777,17 @@ h3 {
 }
 
 @keyframes scaleIn {
-    0% { transform: scale(0); }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .download-section {
@@ -1918,7 +1931,7 @@ h3 {
     margin: 0;
 }
 
-.premium-promo-card > p {
+.premium-promo-card>p {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 16px;
@@ -1968,7 +1981,7 @@ h3 {
     margin-bottom: 4px;
 }
 
-.support-card > p {
+.support-card>p {
     color: var(--text-secondary);
     font-size: 0.875rem;
     margin-bottom: 12px;
@@ -2040,7 +2053,7 @@ h3 {
     .download-wrapper {
         grid-template-columns: 1fr;
     }
-    
+
     .next-steps-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -2051,6 +2064,7 @@ h3 {
         grid-template-columns: 1fr;
     }
 }
+
 /* ==========================================
    BENTO GRID - Features Section
    ========================================== */
@@ -2121,12 +2135,12 @@ h3 {
     .bento-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .bento-card,
     .bento-card.reverse {
         flex-direction: column;
     }
-    
+
     .bento-image {
         min-height: 200px;
     }
@@ -2202,12 +2216,12 @@ h3 {
     .bento-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .bento-card,
     .bento-card.reverse {
         flex-direction: column;
     }
-    
+
     .bento-image {
         min-height: 200px;
     }
@@ -2222,7 +2236,8 @@ h3 {
     gap: 5px;
     cursor: pointer;
     padding: 5px;
-    z-index: 2001 !important; /* Higher than nav-links (2000) */
+    z-index: 2001 !important;
+    /* Higher than nav-links (2000) */
 }
 
 .nav-mobile-toggle span {
@@ -2233,7 +2248,7 @@ h3 {
 }
 
 .nav-mobile-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .nav-mobile-toggle.active span:nth-child(2) {
@@ -2241,7 +2256,7 @@ h3 {
 }
 
 .nav-mobile-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
@@ -2284,6 +2299,7 @@ h3 {
         padding: 12px 20px !important;
     }
 }
+
 /* ==========================================
    Mobile Navigation
    ========================================== */
@@ -2293,7 +2309,8 @@ h3 {
     gap: 5px;
     cursor: pointer;
     padding: 5px;
-    z-index: 2001 !important; /* Higher than nav-links (2000) */
+    z-index: 2001 !important;
+    /* Higher than nav-links (2000) */
 }
 
 .nav-mobile-toggle span {
@@ -2304,7 +2321,7 @@ h3 {
 }
 
 .nav-mobile-toggle.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .nav-mobile-toggle.active span:nth-child(2) {
@@ -2312,7 +2329,7 @@ h3 {
 }
 
 .nav-mobile-toggle.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 @media (max-width: 768px) {
