@@ -562,7 +562,7 @@ function initPhoneInputs(countryCode) {
     if (!document.getElementById('iti-fixes')) {
         const style = document.createElement('style');
         style.id = 'iti-fixes';
-        style.innerHTML = '.iti { width: 100%; display: block; } .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png"); } @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png"); } }';
+        style.innerHTML = '.iti { width: 100%; display: block; } .iti__country-list { background-color: #0a0a0a !important; border: 1px solid #333 !important; color: #fff !important; } .iti__country { border-bottom: 1px solid #222 !important; } .iti__country:hover, .iti__country.iti__highlight { background-color: #333 !important; } .iti__dial-code { color: #aaa !important; } .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags.png"); } @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { .iti__flag { background-image: url("https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/img/flags@2x.png"); } }';
         document.head.appendChild(style);
     }
 
