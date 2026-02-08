@@ -876,6 +876,26 @@
         });
     </script>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Robust Mobile Menu Toggle
+            const toggle = document.querySelector('.nav-mobile-toggle');
+            const nav = document.querySelector('.nav-links');
+
+            if (toggle && nav) {
+                // Remove any existing event listeners by cloning
+                const newToggle = toggle.cloneNode(true);
+                toggle.parentNode.replaceChild(newToggle, toggle);
+
+                newToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // Prevent bubbling issues
+                    nav.classList.toggle('active');
+                    newToggle.classList.toggle('active');
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
