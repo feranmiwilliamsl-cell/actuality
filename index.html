@@ -283,20 +283,28 @@
             .nav-links {
                 position: fixed !important;
                 top: 0 !important;
-                right: -100% !important;
+                right: 0 !important;
                 width: 280px !important;
                 height: 100vh !important;
-                background: rgba(0, 0, 0, 0.98) !important;
+                background: #0a0a0a !important;
+                /* Solid dark background */
+                display: flex !important;
                 flex-direction: column !important;
                 padding: 80px 30px 30px !important;
-                gap: 0 !important;
-                transition: right 0.3s ease !important;
-                z-index: 1000 !important;
+                gap: 20px !important;
+                transform: translateX(100%) !important;
+                /* Hide off-screen */
+                transition: transform 0.3s ease-in-out !important;
+                z-index: 2000 !important;
+                /* Higher than navbar */
                 border-left: 1px solid #333 !important;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5) !important;
             }
 
             .nav-links.active {
-                right: 0 !important;
+                transform: translateX(0) !important;
+                /* Slide in */
+                visibility: visible !important;
             }
 
             .nav-links a {

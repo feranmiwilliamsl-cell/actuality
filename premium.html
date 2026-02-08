@@ -12,6 +12,37 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <!-- Cookie Consent Styles -->
     <style>
+        @media (max-width: 768px) {
+
+            /* Assuming a common breakpoint for mobile navigation */
+            .nav-links {
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: #0a0a0a !important;
+                /* Solid dark background */
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 80px 30px 30px !important;
+                gap: 20px !important;
+                transform: translateX(100%) !important;
+                /* Hide off-screen */
+                transition: transform 0.3s ease-in-out !important;
+                z-index: 2000 !important;
+                /* Higher than navbar */
+                border-left: 1px solid #333 !important;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5) !important;
+            }
+
+            .nav-links.active {
+                transform: translateX(0) !important;
+                /* Slide in */
+                visibility: visible !important;
+            }
+        }
+
         .cookie-banner {
             display: none;
             position: fixed;
