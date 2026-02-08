@@ -323,7 +323,7 @@
                 <a href="training.html">Training</a>
                 <a href="contact.html" class="nav-cta">Contact</a>
             </div>
-            <div class="nav-mobile-toggle" onclick="toggleMobileMenu()">
+            <div class="nav-mobile-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -756,15 +756,7 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            var navLinks = document.querySelector('.nav-links');
-            var toggle = document.querySelector('.nav-mobile-toggle');
-            navLinks.classList.toggle('active');
-            toggle.classList.toggle('active');
-        }
-    </script>
+
     <script>
         // Modal Functions
         function openLeadModal() {
@@ -883,29 +875,7 @@
             }
         });
     </script>
-    <script>
-        // Mobile Menu Toggle Function
-        function toggleMobileMenu() {
-            var navLinks = document.querySelector('.nav-links');
-            var toggle = document.querySelector('.nav-mobile-toggle');
-            if (navLinks && toggle) {
-                navLinks.classList.toggle('active');
-                toggle.classList.toggle('active');
-            }
-        }
 
-        // Also add click event listener as backup
-        document.addEventListener('DOMContentLoaded', function () {
-            var toggle = document.querySelector('.nav-mobile-toggle');
-            if (toggle) {
-                toggle.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleMobileMenu();
-                });
-            }
-        });
-    </script>
 </body>
 
 </html>
