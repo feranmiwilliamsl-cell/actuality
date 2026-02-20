@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -106,7 +106,6 @@
             cursor: pointer;
             padding: 5px;
             z-index: 2001 !important;
-            /* Higher than nav-links (2000) */
         }
 
         .nav-mobile-toggle span {
@@ -140,23 +139,19 @@
                 width: 280px !important;
                 height: 100vh !important;
                 background: #0a0a0a !important;
-                /* Solid dark background */
                 display: flex !important;
                 flex-direction: column !important;
                 padding: 80px 30px 30px !important;
                 gap: 20px !important;
                 transform: translateX(100%) !important;
-                /* Hide off-screen */
                 transition: transform 0.3s ease-in-out !important;
                 z-index: 2000 !important;
-                /* Higher than navbar */
                 border-left: 1px solid #333 !important;
                 box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5) !important;
             }
 
             .nav-links.active {
                 transform: translateX(0) !important;
-                /* Slide in */
                 visibility: visible !important;
             }
 
@@ -165,6 +160,109 @@
                 font-size: 1.1rem !important;
                 border-bottom: 1px solid #222 !important;
                 display: block !important;
+            }
+        }
+    </style>
+
+    <style>
+        /* User Icon Dropdown */
+        .nav-user-dropdown {
+            position: relative;
+            margin-left: 8px;
+        }
+
+        .nav-user-btn {
+            background: none;
+            border: 1px solid #444;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #ccc;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .nav-user-btn:hover {
+            border-color: #2997ff;
+            color: #2997ff;
+            background: rgba(41, 151, 255, 0.1);
+        }
+
+        .user-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 10px);
+            right: 0;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            min-width: 180px;
+            padding: 8px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 3000;
+            animation: menuFadeIn 0.2s ease;
+        }
+
+        .user-menu.show {
+            display: block;
+        }
+
+        @keyframes menuFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-menu-item {
+            display: block;
+            padding: 12px 20px;
+            color: #ddd;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .user-menu-item:hover {
+            background: #2a2a2a;
+            color: #2997ff;
+        }
+
+        .user-menu-item+.user-menu-item {
+            border-top: 1px solid #2a2a2a;
+        }
+
+        @media (max-width: 768px) {
+            .nav-user-dropdown {
+                margin-left: 0;
+                margin-top: 10px;
+                padding-top: 15px;
+                border-top: 1px solid #333;
+            }
+
+            .nav-user-btn {
+                width: 100%;
+                border-radius: 8px;
+                height: 44px;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .user-menu {
+                position: static;
+                box-shadow: none;
+                border: 1px solid #333;
+                margin-top: 8px;
+                animation: none;
             }
         }
     </style>
@@ -186,6 +284,19 @@
                 <a href="download.html">Download</a>
                 <a href="training.html">Training</a>
                 <a href="contact.html" class="nav-cta">Contact</a>
+                <div class="nav-user-dropdown">
+                    <button class="nav-user-btn" onclick="toggleUserMenu(event)">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </button>
+                    <div class="user-menu" id="userMenu">
+                        <a href="login.html" class="user-menu-item">Sign In</a>
+                        <a href="signup.html" class="user-menu-item">Create Account</a>
+                    </div>
+                </div>
             </div>
             <div class="nav-mobile-toggle">
                 <span></span>
@@ -218,121 +329,355 @@
                 <h2>Watch & Learn</h2>
                 <p class="section-desc">Step-by-step video guides to help you get started quickly.</p>
             </div>
+            <style>
+                .video-grid {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 28px;
+                    margin-top: 40px;
+                }
+
+                .video-card {
+                    background: #111;
+                    border-radius: 16px;
+                    overflow: hidden;
+                    border: 1px solid #1f1f1f;
+                    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+                }
+
+                .video-card:hover {
+                    transform: translateY(-6px);
+                    box-shadow: 0 16px 48px rgba(41, 151, 255, 0.18);
+                    border-color: #2997ff;
+                }
+
+                .video-wrapper {
+                    position: relative;
+                    padding-bottom: 56.25%;
+                    height: 0;
+                    overflow: hidden;
+                    background: #0a0a0a;
+                }
+
+                .video-wrapper iframe {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                }
+
+                .video-badge {
+                    position: absolute;
+                    top: 12px;
+                    left: 12px;
+                    background: rgba(0, 0, 0, 0.75);
+                    backdrop-filter: blur(8px);
+                    color: #2997ff;
+                    font-size: 11px;
+                    font-weight: 700;
+                    padding: 4px 10px;
+                    border-radius: 6px;
+                    z-index: 5;
+                    letter-spacing: 0.5px;
+                }
+
+                .video-info {
+                    padding: 18px 20px;
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 14px;
+                }
+
+                .video-info-text {
+                    flex: 1;
+                }
+
+                .video-info h3 {
+                    color: #fff;
+                    font-size: 1rem;
+                    margin: 0 0 6px 0;
+                    font-weight: 600;
+                    line-height: 1.3;
+                }
+
+                .video-info p {
+                    color: #777;
+                    font-size: 0.85rem;
+                    margin: 0;
+                    line-height: 1.5;
+                }
+
+                .video-duration {
+                    display: none;
+                }
+
+                @media (max-width: 1024px) {
+                    .video-grid {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 22px;
+                    }
+                }
+
+                @media (max-width: 640px) {
+                    .video-grid {
+                        grid-template-columns: 1fr;
+                        gap: 18px;
+                    }
+
+                    .video-info {
+                        padding: 14px 16px;
+                    }
+                }
+            </style>
+            <!-- Replace YOUR_YOUTUBE_ID_X with your actual YouTube video IDs -->
             <div class="video-grid">
                 <div class="video-card">
-                    <div class="video-thumbnail">
-                        <div class="play-button">▶</div>
-                        <span class="video-duration">5:30</span>
+                    <div class="video-wrapper"><span class="video-badge">LESSON 1</span>
+                        <iframe src="https://www.youtube.com/embed/LAU_l-_Ufhw" title="Getting Started" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Getting Started</h3>
-                        <p>Learn how to install and set up Actuality for the first time.</p>
+                        <div class="video-info-text">
+                            <h3>Getting Started</h3>
+                            <p>Your first steps with Actuality - setup and initial configuration.</p>
+                        </div><span class="video-duration">~5 min</span>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-thumbnail">
-                        <div class="play-button">▶</div>
-                        <span class="video-duration">8:15</span>
+                    <div class="video-wrapper"><span class="video-badge">LESSON 2</span>
+                        <iframe src="https://www.youtube.com/embed/-8AXrA7z5No" title="Introduction to Dashboard"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Adding Products</h3>
-                        <p>How to add products, set prices, and manage your inventory.</p>
+                        <div class="video-info-text">
+                            <h3>Introduction to Dashboard</h3>
+                            <p>Navigate the main dashboard and understand key metrics.</p>
+                        </div><span class="video-duration">~4 min</span>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-thumbnail">
-                        <div class="play-button">▶</div>
-                        <span class="video-duration">6:45</span>
+                    <div class="video-wrapper"><span class="video-badge">LESSON 3</span>
+                        <iframe src="https://www.youtube.com/embed/c5j60WE90jE" title="Adding Categories"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Processing Sales</h3>
-                        <p>Complete guide to making sales and managing transactions.</p>
+                        <div class="video-info-text">
+                            <h3>Adding Categories</h3>
+                            <p>Learn how to create and organize product categories.</p>
+                        </div><span class="video-duration">~3 min</span>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-thumbnail">
-                        <div class="play-button">▶</div>
-                        <span class="video-duration">7:20</span>
+                    <div class="video-wrapper"><span class="video-badge">LESSON 4</span>
+                        <iframe src="https://www.youtube.com/embed/WZtxZJ8hx3I" title="Adding Products" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Reports & Analytics</h3>
-                        <p>Understanding your business data and generating reports.</p>
+                        <div class="video-info-text">
+                            <h3>Adding Products</h3>
+                            <p>How to add products, set prices, and manage your inventory.</p>
+                        </div><span class="video-duration">~5 min</span>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-thumbnail">
-                        <div class="play-button">▶</div>
-                        <span class="video-duration">4:50</span>
+                    <div class="video-wrapper"><span class="video-badge">LESSON 5</span>
+                        <iframe src="https://www.youtube.com/embed/lA53PENflXc" title="Adding Variants" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>Managing Users</h3>
-                        <p>Add team members and set up role-based permissions.</p>
+                        <div class="video-info-text">
+                            <h3>Adding Variants</h3>
+                            <p>Create product variants for sizes, colors, and more.</p>
+                        </div><span class="video-duration">~4 min</span>
                     </div>
                 </div>
                 <div class="video-card">
-                    <div class="video-thumbnail">
-                        <div class="play-button">▶</div>
-                        <span class="video-duration">9:00</span>
+                    <div class="video-wrapper"><span class="video-badge">LESSON 6</span>
+                        <iframe src="https://www.youtube.com/embed/ryhDEdKj6ng" title="Adding Supplier" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
                     </div>
                     <div class="video-info">
-                        <h3>AI Insights</h3>
-                        <p>Using AI-powered features for demand forecasting.</p>
+                        <div class="video-info-text">
+                            <h3>Adding Supplier</h3>
+                            <p>How to add and manage your product suppliers.</p>
+                        </div><span class="video-duration">~3 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 7</span>
+                        <iframe src="https://www.youtube.com/embed/SMxvQYzSg4s" title="Adding Discounts" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Adding Discounts</h3>
+                            <p>Set up discounts and promotional pricing for your products.</p>
+                        </div><span class="video-duration">~3 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 8</span>
+                        <iframe src="https://www.youtube.com/embed/VlbZRfDIRiM" title="Adding Taxes" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Adding Taxes</h3>
+                            <p>Configure tax rates and apply them to your products.</p>
+                        </div><span class="video-duration">~3 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 9</span>
+                        <iframe src="https://www.youtube.com/embed/Vt2LN6jcHlE" title="Generate Product Code"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Generate Product Code</h3>
+                            <p>How to generate and manage product barcodes and SKU codes.</p>
+                        </div><span class="video-duration">~4 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 10</span>
+                        <iframe src="https://www.youtube.com/embed/e7wzGTgXE8s" title="Sales" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Sales</h3>
+                            <p>Process sales transactions and manage customer orders.</p>
+                        </div><span class="video-duration">~5 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 11</span>
+                        <iframe src="https://www.youtube.com/embed/wc4qjR335wQ" title="Returns and Refunds"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Returns & Refunds</h3>
+                            <p>Handle product returns and process customer refunds.</p>
+                        </div><span class="video-duration">~4 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 12</span>
+                        <iframe src="https://www.youtube.com/embed/G0FFnUwqU88" title="Purchase Order" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Purchase Order</h3>
+                            <p>Create and manage purchase orders for restocking inventory.</p>
+                        </div><span class="video-duration">~4 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 13</span>
+                        <iframe src="https://www.youtube.com/embed/a5X9-PCsG_I" title="Receipt Setting" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Receipt Setting</h3>
+                            <p>Customize your receipt layout and business information.</p>
+                        </div><span class="video-duration">~3 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 14</span>
+                        <iframe src="https://www.youtube.com/embed/8qiVOidS6DI" title="Setup Printer" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Setup Printer</h3>
+                            <p>Connect and configure your receipt printer for printing.</p>
+                        </div><span class="video-duration">~3 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 15</span>
+                        <iframe src="https://www.youtube.com/embed/FL5IIdmvD_A" title="Generate Reports" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Generate Reports</h3>
+                            <p>Understanding your business data and generating reports.</p>
+                        </div><span class="video-duration">~5 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 16</span>
+                        <iframe src="https://www.youtube.com/embed/YGnqOp0SSis" title="Vendor Management"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>Vendor Management</h3>
+                            <p>Manage vendors, track performance, and organize supplier data.</p>
+                        </div><span class="video-duration">~4 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 17</span>
+                        <iframe src="https://www.youtube.com/embed/BagF6ejIyfk" title="License Activation"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>License Activation</h3>
+                            <p>How to activate your license key and manage your subscription.</p>
+                        </div><span class="video-duration">~3 min</span>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-wrapper"><span class="video-badge">LESSON 18</span>
+                        <iframe src="https://www.youtube.com/embed/G7AVej3Kppo" title="AI Assistants" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-info-text">
+                            <h3>AI Assistants</h3>
+                            <p>Using AI-powered features for demand forecasting and insights.</p>
+                        </div><span class="video-duration">~5 min</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Screenshot Guides Section -->
-    <section class="training-section alt-bg">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Screenshot Guides</span>
-                <h2>Visual Walkthroughs</h2>
-                <p class="section-desc">Detailed screenshots explaining every feature of the application.</p>
-            </div>
-            <div class="guide-grid">
-                <div class="guide-card">
-                    <div class="guide-icon"></div>
-                    <h3>Dashboard Overview</h3>
-                    <p>Understand all the widgets and metrics on your main dashboard.</p>
-                    <a href="#" class="guide-link">View Guide -></a>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon"></div>
-                    <h3>Product Management</h3>
-                    <p>Learn to add, edit, and organize products efficiently.</p>
-                    <a href="#" class="guide-link">View Guide -></a>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon"></div>
-                    <h3>Sales & Transactions</h3>
-                    <p>Process sales, handle returns, and manage payments.</p>
-                    <a href="#" class="guide-link">View Guide -></a>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon"></div>
-                    <h3>Reports & Analytics</h3>
-                    <p>Generate and understand your business reports.</p>
-                    <a href="#" class="guide-link">View Guide -></a>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon"></div>
-                    <h3>Settings & Configuration</h3>
-                    <p>Customize Actuality to fit your business needs.</p>
-                    <a href="#" class="guide-link">View Guide -></a>
-                </div>
-                <div class="guide-card">
-                    <div class="guide-icon"></div>
-                    <h3>Activation & Licensing</h3>
-                    <p>How to activate your license and manage subscriptions.</p>
-                    <a href="#" class="guide-link">View Guide -></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Live Seminars Section -->
+    <!-- Live Training Section -->
     <section class="training-section">
         <div class="container">
             <div class="section-header">
@@ -340,55 +685,238 @@
                 <h2>Seminars & Webinars</h2>
                 <p class="section-desc">Join our live training sessions for hands-on learning experience.</p>
             </div>
+            <style>
+                .seminar-register-modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.7);
+                    backdrop-filter: blur(6px);
+                    z-index: 9999;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .seminar-register-modal.active {
+                    display: flex;
+                }
+
+                .seminar-modal-box {
+                    background: #111;
+                    border: 1px solid #2a2a2a;
+                    border-radius: 20px;
+                    padding: 40px;
+                    max-width: 440px;
+                    width: 90%;
+                    position: relative;
+                    animation: modalSlideIn 0.3s ease;
+                }
+
+                @keyframes modalSlideIn {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-20px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+
+                .seminar-modal-box h3 {
+                    color: #fff;
+                    font-size: 1.3rem;
+                    margin: 0 0 6px;
+                }
+
+                .seminar-modal-box .modal-subtitle {
+                    color: #777;
+                    font-size: 0.9rem;
+                    margin: 0 0 28px;
+                }
+
+                .seminar-modal-box label {
+                    display: block;
+                    color: #aaa;
+                    font-size: 0.85rem;
+                    font-weight: 600;
+                    margin: 0 0 6px;
+                }
+
+                .seminar-modal-box input {
+                    width: 100%;
+                    padding: 12px 16px;
+                    background: #1a1a1a;
+                    border: 1px solid #333;
+                    border-radius: 10px;
+                    color: #fff;
+                    font-size: 0.95rem;
+                    margin: 0 0 18px;
+                    outline: none;
+                    transition: border-color 0.2s;
+                    box-sizing: border-box;
+                }
+
+                .seminar-modal-box input:focus {
+                    border-color: #2997ff;
+                }
+
+                .seminar-modal-box .modal-submit {
+                    width: 100%;
+                    padding: 14px;
+                    background: linear-gradient(135deg, #2997ff, #30d158);
+                    color: #fff;
+                    border: none;
+                    border-radius: 10px;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: opacity 0.2s;
+                }
+
+                .seminar-modal-box .modal-submit:hover {
+                    opacity: 0.9;
+                }
+
+                .seminar-modal-box .modal-submit:disabled {
+                    opacity: 0.5;
+                    cursor: not-allowed;
+                }
+
+                .seminar-modal-close {
+                    position: absolute;
+                    top: 16px;
+                    right: 20px;
+                    background: none;
+                    border: none;
+                    color: #666;
+                    font-size: 1.5rem;
+                    cursor: pointer;
+                    padding: 4px;
+                    line-height: 1;
+                }
+
+                .seminar-modal-close:hover {
+                    color: #fff;
+                }
+
+                .seminar-msg {
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 8px;
+                    margin: 12px 0 0;
+                    font-size: 0.9rem;
+                    display: none;
+                }
+
+                .seminar-msg.success {
+                    display: block;
+                    background: rgba(48, 209, 88, 0.15);
+                    color: #30d158;
+                    border: 1px solid rgba(48, 209, 88, 0.3);
+                }
+
+                .seminar-msg.error {
+                    display: block;
+                    background: rgba(255, 59, 48, 0.15);
+                    color: #ff3b30;
+                    border: 1px solid rgba(255, 59, 48, 0.3);
+                }
+            </style>
             <div class="seminar-list">
                 <div class="seminar-card">
                     <div class="seminar-date">
-                        <span class="month">JAN</span>
-                        <span class="day">15</span>
+                        <span class="month">EVERY</span>
+                        <span class="day">SAT</span>
                     </div>
                     <div class="seminar-info">
                         <h3>Getting Started with Actuality</h3>
                         <p>Perfect for new users - learn the basics in 1 hour</p>
                         <div class="seminar-meta">
-                            <span>🕐 10:00 AM WAT</span>
+                            <span>10:00 AM WAT</span>
                             <span> Free for all users</span>
                         </div>
                     </div>
-                    <a href="#" class="btn btn-secondary">Register</a>
-                </div>
-                <div class="seminar-card">
-                    <div class="seminar-date">
-                        <span class="month">JAN</span>
-                        <span class="day">22</span>
-                    </div>
-                    <div class="seminar-info">
-                        <h3>Advanced Inventory Techniques</h3>
-                        <p>Deep dive into stock management and optimization</p>
-                        <div class="seminar-meta">
-                            <span>🕐 2:00 PM WAT</span>
-                            <span> Premium users</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-secondary">Register</a>
-                </div>
-                <div class="seminar-card">
-                    <div class="seminar-date">
-                        <span class="month">FEB</span>
-                        <span class="day">05</span>
-                    </div>
-                    <div class="seminar-info">
-                        <h3>AI & Business Intelligence</h3>
-                        <p>Maximize your AI-powered insights and forecasting</p>
-                        <div class="seminar-meta">
-                            <span>🕐 11:00 AM WAT</span>
-                            <span> Premium users</span>
-                        </div>
-                    </div>
-                    <a href="#" class="btn btn-secondary">Register</a>
+                    <button class="btn btn-secondary" onclick="openSeminarModal()">Register</button>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Seminar Registration Modal -->
+    <div class="seminar-register-modal" id="seminarModal">
+        <div class="seminar-modal-box">
+            <button class="seminar-modal-close" onclick="closeSeminarModal()">&times;</button>
+            <h3>Register for Live Training</h3>
+            <p class="modal-subtitle">Getting Started with Actuality — Every Saturday, 10:00 AM WAT</p>
+            <form id="seminarForm" onsubmit="submitSeminarRegistration(event)">
+                <label for="seminarName">Full Name</label>
+                <input type="text" id="seminarName" name="name" placeholder="Enter your full name" required>
+                <label for="seminarEmail">Email Address</label>
+                <input type="email" id="seminarEmail" name="email" placeholder="Enter your email" required>
+                <button type="submit" class="modal-submit" id="seminarSubmitBtn">Register & Get Meeting Link</button>
+            </form>
+            <div id="seminarMsg" class="seminar-msg"></div>
+        </div>
+    </div>
+
+    <script>
+        function openSeminarModal() {
+            document.getElementById('seminarModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('seminarMsg').className = 'seminar-msg';
+            document.getElementById('seminarMsg').textContent = '';
+            document.getElementById('seminarForm').reset();
+        }
+        function closeSeminarModal() {
+            document.getElementById('seminarModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('seminarModal').addEventListener('click', function (e) {
+            if (e.target === this) closeSeminarModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeSeminarModal();
+        });
+        async function submitSeminarRegistration(e) {
+            e.preventDefault();
+            var btn = document.getElementById('seminarSubmitBtn');
+            var msg = document.getElementById('seminarMsg');
+            var name = document.getElementById('seminarName').value.trim();
+            var email = document.getElementById('seminarEmail').value.trim();
+            btn.disabled = true;
+            btn.textContent = 'Registering...';
+            msg.className = 'seminar-msg';
+            msg.textContent = '';
+            try {
+                var res = await fetch('/api/seminar/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: name, email: email, seminar: 'Getting Started with Actuality' })
+                });
+                var data = await res.json();
+                if (res.ok && data.success) {
+                    msg.className = 'seminar-msg success';
+                    msg.textContent = 'Registration successful! Check your email for the Google Meet link.';
+                    document.getElementById('seminarForm').reset();
+                } else {
+                    msg.className = 'seminar-msg error';
+                    msg.textContent = data.error || 'Registration failed. Please try again.';
+                }
+            } catch (err) {
+                msg.className = 'seminar-msg error';
+                msg.textContent = 'Network error. Please try again.';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Register & Get Meeting Link';
+        }
+    </script>
+
+
 
     <!-- Need Help Section -->
     <section class="training-section alt-bg">
@@ -450,7 +978,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>© 2025 Standowd. All Rights Reserved.</p>
+            <p>&copy; 2025 Standowd. All Rights Reserved.</p>
             <p>support@actuality.cloud</p>
         </div>
         </div>
@@ -503,6 +1031,20 @@
                     nav.classList.toggle('active');
                     newToggle.classList.toggle('active');
                 });
+            }
+        });
+    </script>
+
+    <script>
+        function toggleUserMenu(e) {
+            e.stopPropagation();
+            var menu = document.getElementById('userMenu');
+            menu.classList.toggle('show');
+        }
+        document.addEventListener('click', function (e) {
+            var menu = document.getElementById('userMenu');
+            if (menu && !e.target.closest('.nav-user-dropdown')) {
+                menu.classList.remove('show');
             }
         });
     </script>
