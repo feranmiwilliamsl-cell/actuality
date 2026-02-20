@@ -164,7 +164,7 @@
         }
     </style>
 
-    
+
 </head>
 
 <body>
@@ -183,12 +183,13 @@
                 <a href="download.html">Download</a>
                 <a href="training.html">Training</a>
                 <a href="contact.html" class="nav-cta">Contact</a>
-                </div></div>
-            <div class="nav-mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
             </div>
+        </div>
+        <div class="nav-mobile-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         </div>
     </nav>
 
@@ -776,27 +777,8 @@
             var email = document.getElementById('seminarEmail').value.trim();
             btn.disabled = true;
             btn.textContent = 'Registering...';
-            msg.className = 'seminar-msg';
-            msg.textContent = '';
-            try {
-                var res = await fetch('/api/seminar/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name: name, email: email, seminar: 'Getting Started with Actuality' })
-                });
-                var data = await res.json();
-                if (res.ok && data.success) {
-                    msg.className = 'seminar-msg success';
-                    msg.textContent = 'Registration successful! Check your email for the Google Meet link.';
-                    document.getElementById('seminarForm').reset();
-                } else {
-                    msg.className = 'seminar-msg error';
-                    msg.textContent = data.error || 'Registration failed. Please try again.';
-                }
-            } catch (err) {
-                msg.className = 'seminar-msg error';
-                msg.textContent = 'Network error. Please try again.';
-            }
+            msg.className = 'seminar-msg success';
+            msg.innerHTML = 'Thanks ' + name + '! Here is your meeting link:<br><br><a href="https://meet.google.com/pea-ijpz-eoz" target="_blank" style="color:#2997ff;font-weight:700;font-size:1.05rem;">🔗 Join Google Meet</a><br><br><span style="color:#8b949e;font-size:0.85rem;">Every Saturday, 10:00 AM WAT</span>';
             btn.disabled = false;
             btn.textContent = 'Register & Get Meeting Link';
         }
@@ -921,7 +903,7 @@
         });
     </script>
 
-    
+
 </body>
 
 </html>
