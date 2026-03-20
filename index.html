@@ -361,7 +361,7 @@
             </p>
             <div class="hero-cta">
                 <a href="#" onclick="openLeadModal(); return false;" class="btn btn-primary">
-                    Start Free 3-Month Trial
+                    Start Free 1-Year Trial
                     <span class="btn-arrow">-></span>
                 </a>
                 <a href="#pricing" class="btn btn-secondary">
@@ -370,8 +370,8 @@
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Months Free</span>
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Year Free</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
@@ -532,7 +532,7 @@
                         <div class="pricing-amount">
                             <span class="currency" data-currency-symbol>₦</span>
                             <span class="price" data-price="0">0</span>
-                            <span class="period">/3 months</span>
+                            <span class="period">/1 year</span>
                         </div>
                     </div>
                     <ul class="pricing-features">
@@ -562,7 +562,7 @@
                         <li> Advanced analytics</li>
                         <li> Multi-user support</li>
                     </ul>
-                    <a href="premium.html" class="btn btn-primary btn-full">Get Premium</a>
+                    <button class="btn btn-primary btn-full" onclick="addToCartAction('yearly')">Get Premium</button>
                 </div>
                 <div class="pricing-card">
                     <div class="pricing-header">
@@ -580,7 +580,8 @@
                         <li> Priority support</li>
                         <li> Save 12% vs yearly</li>
                     </ul>
-                    <a href="premium.html" class="btn btn-secondary btn-full">Get 2 Years</a>
+                    <button class="btn btn-secondary btn-full" onclick="addToCartAction('2year')">Get 2
+                        Years</button>
                 </div>
             </div>
         </div>
@@ -640,7 +641,7 @@
                         <span class="faq-toggle">+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>After 3 months, you can upgrade to a premium plan to continue using the software. Your data
+                        <p>After 1 year, you can upgrade to a premium plan to continue using the software. Your data
                             is preserved.</p>
                     </div>
                 </div>
@@ -734,7 +735,7 @@
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
                     <input type="hidden" name="_autoresponse"
-                        value="Thank you for downloading Actuality! Your download should start automatically. If you have any questions, contact us at support@actuality.cloud or WhatsApp: +234 708 433 6469. Enjoy your 3-month free trial!">
+                        value="Thank you for downloading Actuality! Your download should start automatically. If you have any questions, contact us at support@actuality.cloud or WhatsApp: +234 708 433 6469. Enjoy your 1-year free trial!">
                     <div class="form-group">
                         <label for="fullName">Full Name *</label>
                         <input type="text" id="fullName" name="Name" required placeholder="Your full name">
@@ -768,6 +769,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="auth.js"></script>
 
     <script>
         // Modal Functions
