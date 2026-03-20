@@ -42,14 +42,14 @@ const CurrencyManager = {
 
     // Initialize currency detection
     async init() {
-        console.log('🌍 CurrencyManager: Initializing...');
+        console.log('CurrencyManager: Initializing...');
 
         // Check if currency is cached in localStorage
         const cachedCurrency = localStorage.getItem('actuality_currency');
         const cachedExpiry = localStorage.getItem('actuality_currency_expiry');
 
         if (cachedCurrency && cachedExpiry && Date.now() < parseInt(cachedExpiry)) {
-            console.log('💾 Using cached currency:', cachedCurrency);
+            console.log('Using cached currency:', cachedCurrency);
             this.currentCurrency = this.currencies[cachedCurrency] || this.currencies[this.defaultCountry];
             this.updateAllPrices();
             initPhoneInputs(cachedCurrency);
@@ -65,12 +65,12 @@ const CurrencyManager = {
             localStorage.setItem('actuality_currency', countryCode);
             localStorage.setItem('actuality_currency_expiry', (Date.now() + 86400000).toString());
 
-            console.log('✅ Currency set to:', this.currentCurrency.code, '(' + this.currentCurrency.symbol + ')');
+            console.log('Currency set to:', this.currentCurrency.code, '(' + this.currentCurrency.symbol + ')');
 
             // Initialize phone inputs with detected country
             initPhoneInputs(countryCode);
         } catch (error) {
-            console.warn('⚠️ Could not detect location, using default currency:', error);
+            console.warn('Could not detect location, using default currency:', error);
             this.currentCurrency = this.currencies[this.defaultCountry];
             initPhoneInputs(this.defaultCountry);
         }
@@ -86,7 +86,7 @@ const CurrencyManager = {
             if (!response.ok) throw new Error('API request failed');
 
             const data = await response.json();
-            console.log('📍 Detected country:', data.countryCode);
+            console.log('Detected country:', data.countryCode);
             return data.countryCode || this.defaultCountry;
         } catch (error) {
             // Fallback: try alternative API
@@ -95,7 +95,7 @@ const CurrencyManager = {
                 if (!response.ok) throw new Error('Fallback API failed');
 
                 const data = await response.json();
-                console.log('📍 Detected country (fallback):', data.country_code);
+                console.log('Detected country (fallback):', data.country_code);
                 return data.country_code || this.defaultCountry;
             } catch (fallbackError) {
                 console.warn('Both IP APIs failed:', fallbackError);
@@ -138,7 +138,7 @@ const CurrencyManager = {
     updateAllPrices() {
         if (!this.currentCurrency) return;
 
-        console.log('💰 Updating prices to', this.currentCurrency.code);
+        console.log('Updating prices to', this.currentCurrency.code);
 
         // Update currency symbols
         document.querySelectorAll('[data-currency-symbol], .currency').forEach(el => {
@@ -182,7 +182,7 @@ const CurrencyManager = {
             localStorage.setItem('actuality_currency', countryCode);
             localStorage.setItem('actuality_currency_expiry', (Date.now() + 86400000).toString());
             this.updateAllPrices();
-            console.log('🔄 Currency manually changed to:', this.currentCurrency.code);
+            console.log('Currency manually changed to:', this.currentCurrency.code);
         }
     },
 
